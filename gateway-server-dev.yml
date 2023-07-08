@@ -2,14 +2,6 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: security service
-          uri: ${SECURITY_SERVICE_URI}
-          predicates:
-            - Path=/security-service/**
-            - Header=security,true
-          filters:
-            - AddRequestHeader=securityKey, securityValue
-            - AddResponseHeader=securityKey, securityValue
         - id: order service
           uri: ${ORDER_SERVICE_URI}
           predicates:
