@@ -3,7 +3,7 @@ spring:
     gateway:
       routes:
         - id: order service
-          uri: ${ORDER_SERVICE_URI}
+          uri: http://localhost:9002
           predicates:
             - Path=/order-service/**
             - Header=order,true
@@ -11,7 +11,7 @@ spring:
             - AddRequestHeader=orderKey, orderValue
             - AddResponseHeader=orderKey, orderValue
         - id: customer service
-          uri: ${CUSTOMER_SERVICE_URI}
+          uri: http://localhost:9003
           predicates:
             - Path=/customer-service/**
             - Header=customer,true
@@ -19,7 +19,7 @@ spring:
             - AddRequestHeader=customerKey, customerValue
             - AddResponseHeader=customerKey, customerValue
         - id: product service
-          uri: ${PRODUCT_SERVICE_URI}
+          uri: http://localhost:9004
           predicates:
             - Path=/product-service/**
             - Header=product,true
