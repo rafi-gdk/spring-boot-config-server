@@ -1,0 +1,3 @@
+order:
+  customer.url: "http://customer-deployment:9003"
+  product.url: "http://product-deployment:9004"
