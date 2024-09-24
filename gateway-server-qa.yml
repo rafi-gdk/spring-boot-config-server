@@ -1,16 +1,6 @@
 spring:
   cloud:
     gateway:
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:9001"
-            allowedHeaders: "*"
-            allowedMethods:
-              - GET
-              - POST
-              - OPTIONS
-              - DELETE
       routes:
         - id: security service
           uri: http://security-deployment:9002
