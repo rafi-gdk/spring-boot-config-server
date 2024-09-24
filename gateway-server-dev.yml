@@ -1,0 +1,46 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:9000"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - OPTIONS
+              - DELETE
+      routes:
+        - id: security service
+          uri: http://security-deployment:9002
+          predicates:
+            - Path=/security-service/**
+            - Header=security,true
+          filters:
+            - AddRequestHeader=securityKey, securityValue
+            - AddResponseHeader=securityKey, securityValue
+        - id: order service
+          uri: http://order-deployment:9003
+          predicates:
+            - Path=/order-service/**
+            - Header=order,true
+          filters:
+            - AddRequestHeader=orderKey, orderValue
+            - AddResponseHeader=orderKey, orderValue
+        - id: customer service
+          uri: http://customer-deployment:9004
+          predicates:
+            - Path=/customer-service/**
+            - Header=customer,true
+          filters:
+            - AddRequestHeader=customerKey, customerValue
+            - AddResponseHeader=customerKey, customerValue
+        - id: product service
+          uri: http://product-deployment:9005
+          predicates:
+            - Path=/product-service/**
+            - Header=product,true
+          filters:
+            - AddRequestHeader=productKey, productValue
+            - AddResponseHeader=productKey, productValue
