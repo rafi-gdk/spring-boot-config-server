@@ -4,7 +4,7 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:9001"
+            allowedOrigins: "http://localhost:9000"
             allowedHeaders: "*"
             allowedMethods:
               - GET
@@ -13,7 +13,7 @@ spring:
               - DELETE
       routes:
         - id: security service
-          uri: http://security-deployment:9002
+          uri: http://security-deployment:9001
           predicates:
             - Path=/security-service/**
             - Header=security,true
@@ -21,7 +21,7 @@ spring:
             - AddRequestHeader=securityKey, securityValue
             - AddResponseHeader=securityKey, securityValue
         - id: order service
-          uri: http://order-deployment:9003
+          uri: http://order-deployment:9002
           predicates:
             - Path=/order-service/**
             - Header=order,true
@@ -29,7 +29,7 @@ spring:
             - AddRequestHeader=orderKey, orderValue
             - AddResponseHeader=orderKey, orderValue
         - id: customer service
-          uri: http://customer-deployment:9004
+          uri: http://customer-deployment:9003
           predicates:
             - Path=/customer-service/**
             - Header=customer,true
@@ -37,7 +37,7 @@ spring:
             - AddRequestHeader=customerKey, customerValue
             - AddResponseHeader=customerKey, customerValue
         - id: product service
-          uri: http://product-deployment:9005
+          uri: http://product-deployment:9004
           predicates:
             - Path=/product-service/**
             - Header=product,true
